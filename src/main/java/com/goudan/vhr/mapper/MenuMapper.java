@@ -1,6 +1,5 @@
 package com.goudan.vhr.mapper;
 
-import com.goudan.vhr.model.Menu;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

@@ -46,4 +46,6 @@ public interface HrMapper {
      * @return update count
      */
     int updateByPrimaryKey(Hr record);
+
+    Hr loadUserByUsername(String username);
 }
