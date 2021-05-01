@@ -4,9 +4,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @ApiModel(value="com-goudan-vhr-model-Hr")
 @Data
@@ -62,9 +65,16 @@ public class Hr implements UserDetails {
     @ApiModelProperty(value="")
     private String remark;
 
+    public List<Role> roles;
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getName())); //数据库中有前缀就不加 没有要加 ROLE_
+        }
+        return authorities;
     }
 
 

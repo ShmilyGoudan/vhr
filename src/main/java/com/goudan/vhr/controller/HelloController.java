@@ -18,4 +18,17 @@ public class HelloController {
     public String hello() {
         return "hello";
     }
+
+
+
+    @RequestMapping(value = "/emp/basic/hello",method = RequestMethod.GET)
+    public String hello2() {
+        return "/emp/basic/hello";
+    }
+
+
+    @RequestMapping(value = "/emp/adv/hello",method = RequestMethod.GET)
+    public String hello3() {
+        return "/emp/adv/hello";
+    }
 }

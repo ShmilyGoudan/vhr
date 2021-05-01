@@ -1,15 +1,15 @@
 package com.goudan.vhr.mapper;
 
-import com.goudan.vhr.model.Hr;
-import com.goudan.vhr.model.Role;
+import com.goudan.vhr.model.Menu;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
-public interface HrMapper {
+public interface MenuMapper {
     /**
      * delete by primary key
+     *
      * @param id primaryKey
      * @return deleteCount
      */
@@ -17,40 +17,45 @@ public interface HrMapper {
 
     /**
      * insert record to table
+     *
      * @param record the record
      * @return insert count
      */
-    int insert(Hr record);
+    int insert(Menu record);
 
     /**
      * insert record to table selective
+     *
      * @param record the record
      * @return insert count
      */
-    int insertSelective(Hr record);
+    int insertSelective(Menu record);
 
     /**
      * select by primary key
+     *
      * @param id primary key
      * @return object by primary key
      */
-    Hr selectByPrimaryKey(Integer id);
+    Menu selectByPrimaryKey(Integer id);
 
     /**
      * update record selective
+     *
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKeySelective(Hr record);
+    int updateByPrimaryKeySelective(Menu record);
 
     /**
      * update record
+     *
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(Hr record);
+    int updateByPrimaryKey(Menu record);
 
-    Hr loadUserByUsername(String username);
+    List<Menu> getMenuByUserId(Integer Userid);
 
-    List<Role> getHrRolesById(Integer id);
+    List<Menu> getAllMenusRole();
 }

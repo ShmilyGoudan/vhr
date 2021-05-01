@@ -18,8 +18,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService implements UserDetailsService {
 
+
+    private HrMapper hrMapper;
+
     @Autowired
-    HrMapper hrMapper;
+    public void setHrMapper(HrMapper hrMapper) {
+        this.hrMapper = hrMapper;
+    }
 
 
     @Override
@@ -28,6 +33,7 @@ public class UserService implements UserDetailsService {
         if (hr == null) {
             throw new UsernameNotFoundException("用户名不存在 ");
         }
+        hr.setRoles(hrMapper.getHrRolesById(hr.getId()));
         return hr;
     }
 }

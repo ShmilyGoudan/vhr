@@ -159,4 +159,12 @@
         from hr
         where username = #{username,jdbcType=VARCHAR}
     </select>
+
+    <select id="getHrRolesById" resultType="com.goudan.vhr.model.Role">
+        select r.*
+        from role r,
+             hr_role hrr
+        where hrr.`rid` = r.`id`
+          and hrr.`hrid` = #{id}
+    </select>
 </mapper>
